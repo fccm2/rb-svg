@@ -31,8 +31,12 @@ class Svg
 
   def write(filename)
     if @is_finished
-      File.open(filename, 'w') do |f|
-        f.write(@buffer)
+      if File.exist?(filename)
+        raise StandardError, "file \"#{filename}\" already exists"
+      else
+        File.open(filename, 'w') do |f|
+          f.write(@buffer)
+        end
       end
     else
       raise StandardError, "document not finished"
