@@ -4,8 +4,8 @@ srand(3210)
 
 my_doc = Svg.new(240, 180)
 
-# Générer 8 cercles aléatoires
-10.times do
+# Create 8 random circles
+8.times do
   r = rand(6..32)
   cx = rand(0..240)
   cy = rand(0..180)
