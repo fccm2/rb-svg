@@ -4,7 +4,7 @@ srand(3210)
 
 my_doc = Svg.new(240, 180)
 
-# Générer 8 rectangles aléatoires
+# Create 12 random rectangles
 12.times do
   x = rand(0..240)
   y = rand(0..180)
