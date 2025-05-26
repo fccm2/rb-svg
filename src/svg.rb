@@ -73,8 +73,48 @@ class Svg
     end
 
     str = "<circle cx=\"#{cx}\" cy=\"#{cy}\" r=\"#{r}\""
-    str += id + css + style
     str += fill + fill_opacity + stroke + stroke_width + stroke_opacity
+    str += id + css + style
+
+    @buffer << str + " />\n"
+  end
+
+  def add_rect(x, y, width, height,
+        fill: "", fill_opacity: "",
+        stroke: "", stroke_width: "", stroke_opacity: "",
+        id: "", css: "", style: "")
+
+    if @is_finished
+      raise StandardError, "document already finished"
+    end
+    if fill != ""
+      fill = " fill=\"#{fill}\""
+    end
+    if fill_opacity != ""
+      fill_opacity = " fill-opacity=\"#{fill_opacity}\""
+    end
+    if stroke != ""
+      stroke = " stroke=\"#{stroke}\""
+    end
+    if stroke_width != ""
+      stroke_width = " stroke-width=\"#{stroke_width}\""
+    end
+    if stroke_opacity != ""
+      stroke_opacity = " stroke-opacity=\"#{stroke_opacity}\""
+    end
+    if style != ""
+      style = " style=\"#{style}\""
+    end
+    if css != ""
+      css = " css=\"#{css}\""
+    end
+    if id != ""
+      id = " id=\"#{id}\""
+    end
+
+    str = "<rect x=\"#{x}\" y=\"#{y}\" width=\"#{width}\" height=\"#{height}\""
+    str += fill + fill_opacity + stroke + stroke_width + stroke_opacity
+    str += id + css + style
 
     @buffer << str + " />\n"
   end
